@@ -118,7 +118,7 @@ export default function Home({ topTracksData, usersPlaylists }) {
 
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
-  const res = await fetch("http:localhost:3000/api/spotify", {
+  const res = await fetch("https://spotify-pattern.vercel.app/api/spotify", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
