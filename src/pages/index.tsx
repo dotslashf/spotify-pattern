@@ -62,50 +62,55 @@ export default function Home({ topTracksData, usersPlaylists }) {
   }
 
   return (
-    <Layout>
-      {topTracksData.items && usersPlaylists ? (
-        <div className="flex w-full flex-col items-center space-y-4 py-8">
-          <div>
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-4 py-2 transition"
-              onClick={() => generateImage()}
-            >
-              Generate
-            </button>
-          </div>
-          <div className="flex flex-col items-center space-y-4">
-            <canvas ref={canvasRef} width={500} height={500} />
+    <>
+      <Head>
+        <title>Spotify Pattern</title>
+      </Head>
+      <Layout>
+        {topTracksData.items && usersPlaylists ? (
+          <div className="flex w-full flex-col items-center space-y-4 py-8">
+            <div>
+              <button
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-4 py-2 transition"
+                onClick={() => generateImage()}
+              >
+                Generate
+              </button>
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <canvas ref={canvasRef} width={500} height={500} />
+              {isGenerated && (
+                <div>
+                  <button
+                    type="button"
+                    className="text-white bg-green-700 hover:bg-green-800 rounded-lg text-sm px-4 py-2 transition"
+                    onClick={() => handleDownload()}
+                  >
+                    Download
+                  </button>
+                </div>
+              )}
+            </div>
             {isGenerated && (
-              <div>
-                <button
-                  type="button"
-                  className="text-white bg-green-700 hover:bg-green-800 rounded-lg text-sm px-4 py-2 transition"
-                  onClick={() => handleDownload()}
-                >
-                  Download
-                </button>
+              <div className="max-w-4xl">
+                <ul className="grid grid-cols-10 text-xs text-gray-800 list-none gap-4">
+                  {tracks.map((track, i) => {
+                    return (
+                      <li key={i} className="flex items-center text-center">
+                        {track}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             )}
           </div>
-          {isGenerated && (
-            <div className="max-w-4xl">
-              <ul className="grid grid-cols-10 text-xs text-gray-800 list-none gap-4">
-                {tracks.map((track, i) => {
-                  return (
-                    <li key={i} className="flex items-center text-center">
-                      {track}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
-        </div>
-      ) : (
-        ""
-      )}
-    </Layout>
+        ) : (
+          ""
+        )}
+      </Layout>
+    </>
   );
 }
 
