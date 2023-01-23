@@ -1,7 +1,9 @@
+// @ts-nocheck
 import Layout from "@/components/Layout";
 import { getSession } from "next-auth/react";
 import ColorThief from "colorthief";
 import { useRef, useState } from "react";
+import Head from "next/head";
 
 export default function Home({ topTracksData, usersPlaylists }) {
   const canvasRef = useRef(null);

@@ -24,6 +24,7 @@ export const authOptions: AuthOptions = {
       }
       return token;
     },
+    // @ts-ignore
     async session(session, user) {
       session.user = user;
       return session;

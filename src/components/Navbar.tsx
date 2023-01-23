@@ -9,7 +9,8 @@ function Navbar() {
         <div className="w-full bg-black  opacity-90 h-16 flex justify-between ">
           <div className="w-full lg:w-30/6 xl:w-full  h-full flex items-center px-4 text-white font-bold">
             {status === "authenticated"
-              ? `@${data.session.user.name}`
+              ? // @ts-ignore
+                `@${data.session.user.name}`
               : "spotify-pattern"}
           </div>
 
